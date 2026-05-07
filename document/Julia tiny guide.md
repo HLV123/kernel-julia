@@ -2,13 +2,18 @@
 
 > **môi trường**
 > rustc 1.97.0-nightly (365c0e1d7 2026-05-06)
+> 
 > cargo 1.97.0-nightly (4f9b52075 2026-05-01)
+> 
 > bootimage 0.10.4
+> 
 > QEMU emulator version 11.0.50 (v11.0.0-12631-g54e84cdc7a)
 
 > **vào folder ketquahai mở powershell và chạy lần lượt**
 > cargo build
+> 
 > cargo bootimage
+> 
 > qemu-system-x86_64 -drive format=raw,file=target\x86_64-mykernel\debug\bootimage-mykernel.bin -serial stdio -no-reboot
 
 > Chạy trên **MyKernel** · REPL: `kernel> julia` 
