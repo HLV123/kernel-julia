@@ -1,0 +1,413 @@
+﻿cargo : warning: unused imports: `AtomicBool` and `AtomicU32`
+At line:1 char:54
++ ... H = "$env:USERPROFILE\.cargo\bin;$env:PATH"; cargo build 2>&1 | Out-F ...
++                                                  ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: unused...and `AtomicU32`:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  --> src\apic.rs:37:26
+   |
+37 | use core::sync::atomic::{AtomicBool, AtomicU32, Ordering};
+   |                          ^^^^^^^^^^  ^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `alloc::vec::Vec`
+  --> src\drivers\virtio_blk.rs:16:5
+   |
+16 | use alloc::vec::Vec;
+   |     ^^^^^^^^^^^^^^^
+
+warning: unused import: `ToString`
+ --> src\fs\ramfs.rs:7:29
+  |
+7 | use alloc::string::{String, ToString};
+  |                             ^^^^^^^^
+
+warning: unused import: `Ordering`
+  --> src\fs\vfs.rs:16:37
+   |
+16 | use core::sync::atomic::{AtomicU64, Ordering};
+   |                                     ^^^^^^^^
+
+warning: unused imports: `AtomicI32` and `Ordering`
+  --> src\net\socket.rs:24:26
+   |
+24 | use core::sync::atomic::{AtomicI32, Ordering};
+   |                          ^^^^^^^^^  ^^^^^^^^
+
+warning: unused import: `AtomicBool`
+  --> src\security.rs:35:37
+   |
+35 | use core::sync::atomic::{AtomicU64, AtomicBool, Ordering};
+   |                                     ^^^^^^^^^^
+
+warning: unused import: `alloc::string::String`
+  --> src\security.rs:36:5
+   |
+36 | use alloc::string::String;
+   |     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `alloc::vec::Vec`
+  --> src\shell.rs:28:5
+   |
+28 | use alloc::vec::Vec;
+   |     ^^^^^^^^^^^^^^^
+
+warning: unused import: `AtomicBool`
+  --> src\smp.rs:18:26
+   |
+18 | use core::sync::atomic::{AtomicBool, AtomicU32, AtomicU64, Ordering};
+   |                          ^^^^^^^^^^
+
+warning: unnecessary braces around function argument
+   --> src\smp.rs:205:42
+    |
+205 |         find_table_xsdt(phys_mem_offset, { rsdp.xsdt_addr }, b"APIC")
+    |                                          ^^              ^^
+    |
+    = note: `#[warn(unused_braces)]` (part of `#[warn(unused)]`) on by default
+help: remove these braces
+    |
+205 -         find_table_xsdt(phys_mem_offset, { rsdp.xsdt_addr }, b"APIC")
+205 +         find_table_xsdt(phys_mem_offset, rsdp.xsdt_addr, b"APIC")
+    |
+
+warning: unused import: `alloc::vec::Vec`
+  --> src\syscall.rs:43:5
+   |
+43 | use alloc::vec::Vec;
+   |     ^^^^^^^^^^^^^^^
+
+warning: unused imports: `print` and `println`
+ --> src\usermode.rs:1:13
+  |
+1 | use crate::{print, println, serial_println};
+  |             ^^^^^  ^^^^^^^
+
+warning: unused doc comment
+   --> src\vga_buffer.rs:131:1
+    |
+131 | /// Global writer ├óΓé¼ΓÇ¥ d├â┬╣ng ├äΓÇÿ├å┬░├í┬╗┬úc t├í┬╗┬½ m├í┬╗┬ìi n├å┬íi trong kernel
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ rustdoc does not generate documentation for 
+macro invocations
+    |
+    = help: to document an item produced by a macro, the macro must produce the documentation as part of its expansion
+    = note: `#[warn(unused_doc_comments)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `alloc::vec::Vec`
+ --> src\forthvm\assembler.rs:8:5
+  |
+8 | use alloc::vec::Vec;
+  |     ^^^^^^^^^^^^^^^
+
+warning: the feature `naked_functions` has been stable since 1.88.0 and no longer requires an attribute to enable
+  --> src\lib.rs:11:12
+   |
+11 | #![feature(naked_functions)]
+   |            ^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(stable_features)]` on by default
+
+warning: variable does not need to be mutable
+   --> src\drivers\virtio_blk.rs:203:13
+    |
+203 |         let mut status: u8 = 0xFF; // Will be written by device
+    |             ----^^^^^^
+    |             |
+    |             help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src\drivers\virtio_net.rs:214:17
+    |
+214 |             let mut tx_queue = alloc::boxed::Box::new(TxQueueBufs {
+    |                 ----^^^^^^^^
+    |                 |
+    |                 help: remove this `mut`
+
+warning: unused variable: `align`
+   --> src\elf_loader.rs:148:13
+    |
+148 |         let align  = { phdr.p_align };
+    |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_align`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable `lfn_order` is assigned to, but never used
+   --> src\fs\fat32.rs:234:13
+    |
+234 |         let mut lfn_order = 0u8;
+    |             ^^^^^^^^^^^^^
+    |
+    = note: consider using `_lfn_order` instead
+
+warning: value assigned to `lfn_order` is never read
+   --> src\fs\fat32.rs:262:21
+    |
+262 |                     lfn_order = order & 0x3F;
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `data_end_pos`
+   --> src\fs\initramfs.rs:259:13
+    |
+259 |         let data_end_pos = self.data.len();
+    |             ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_data_end_pos`
+
+warning: unnecessary `unsafe` block
+  --> src\gdt.rs:63:5
+   |
+63 |     unsafe {
+   |     ^^^^^^ unnecessary `unsafe` block
+   |
+   = note: `#[warn(unused_unsafe)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `edx1`
+  --> src\security.rs:60:28
+   |
+60 |     let (ecx7, edx7, ecx1, edx1) = unsafe {
+   |                            ^^^^ help: if this is intentional, prefix it with an underscore: `_edx1`
+
+warning: unused variable: `addr`
+   --> src\syscall.rs:455:13
+    |
+455 | fn sys_mmap(addr: u64, len: u64, _prot: u64, flags: u64, _fd: i64, _offset: u64) -> i64 {
+    |             ^^^^ help: if this is intentional, prefix it with an underscore: `_addr`
+
+warning: unused variable: `buf_ptr`
+   --> src\syscall.rs:575:28
+    |
+575 | fn sys_getdents64(fd: u64, buf_ptr: u64, count: u64) -> i64 {
+    |                            ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_buf_ptr`
+
+warning: unused variable: `count`
+   --> src\syscall.rs:575:42
+    |
+575 | fn sys_getdents64(fd: u64, buf_ptr: u64, count: u64) -> i64 {
+    |                                          ^^^^^ help: if this is intentional, prefix it with an underscore: 
+`_count`
+
+warning: unused variable: `clockid`
+   --> src\syscall.rs:581:22
+    |
+581 | fn sys_clock_gettime(clockid: u64, tp_ptr: u64) -> i64 {
+    |                      ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_clockid`
+
+warning: unused variable: `pid`
+   --> src\syscall.rs:590:18
+    |
+590 | fn sys_prlimit64(pid: u64, resource: u64, new_limit: u64, old_limit: u64) -> i64 {
+    |                  ^^^ help: if this is intentional, prefix it with an underscore: `_pid`
+
+warning: unused variable: `resource`
+   --> src\syscall.rs:590:28
+    |
+590 | fn sys_prlimit64(pid: u64, resource: u64, new_limit: u64, old_limit: u64) -> i64 {
+    |                            ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_resource`
+
+warning: unused variable: `new_limit`
+   --> src\syscall.rs:590:43
+    |
+590 | fn sys_prlimit64(pid: u64, resource: u64, new_limit: u64, old_limit: u64) -> i64 {
+    |                                           ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: 
+`_new_limit`
+
+warning: constant `LAPIC_LDR` is never used
+  --> src\apic.rs:47:7
+   |
+47 | const LAPIC_LDR:     u32 = 0x0D0;
+   |       ^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: constant `LAPIC_DFR` is never used
+  --> src\apic.rs:48:7
+   |
+48 | const LAPIC_DFR:     u32 = 0x0E0;
+   |       ^^^^^^^^^
+
+warning: constant `LAPIC_TIMER_CCR` is never used
+  --> src\apic.rs:58:7
+   |
+58 | const LAPIC_TIMER_CCR: u32 = 0x390;
+   |       ^^^^^^^^^^^^^^^
+
+warning: constant `IOAPIC_ARB` is never used
+   --> src\apic.rs:222:7
+    |
+222 | const IOAPIC_ARB:   u32 = 0x02;
+    |       ^^^^^^^^^^
+
+warning: field `dirty` is never read
+  --> src\drivers\virtio_blk.rs:35:5
+   |
+31 | struct CacheEntry {
+   |        ---------- field in this struct
+...
+35 |     dirty: bool,
+   |     ^^^^^
+
+warning: field `tx_last_used` is never read
+   --> src\drivers\virtio_net.rs:159:5
+    |
+154 | pub struct VirtioNetDev {
+    |            ------------ field in this struct
+...
+159 |     tx_last_used: u16,
+    |     ^^^^^^^^^^^^
+
+warning: constant `PT_NULL` is never used
+  --> src\elf_loader.rs:27:7
+   |
+27 | const PT_NULL: u32 = 0;
+   |       ^^^^^^^
+
+warning: field `bytes_per_cluster` is never read
+   --> src\fs\fat32.rs:127:5
+    |
+121 | pub struct Fat32Fs {
+    |            ------- field in this struct
+...
+127 |     bytes_per_cluster: u64,
+    |     ^^^^^^^^^^^^^^^^^
+
+warning: static `NEXT_FD` is never used
+   --> src\fs\vfs.rs:224:8
+    |
+224 | static NEXT_FD: AtomicU64 = AtomicU64::new(3); // 0,1,2 = stdin,stdout,stderr
+    |        ^^^^^^^
+
+warning: associated function `new` is never used
+  --> src\smp.rs:41:14
+   |
+40 | impl CpuInfo {
+   | ------------ associated function in this implementation
+41 |     const fn new() -> Self {
+   |              ^^^
+
+warning: constant `MADT_TYPE_IOAPIC` is never used
+   --> src\smp.rs:148:7
+    |
+148 | const MADT_TYPE_IOAPIC: u8 = 1;
+    |       ^^^^^^^^^^^^^^^^
+
+warning: field `0` is never read
+ --> src\task\simple_executor.rs:9:18
+  |
+9 | struct TaskWaker(TaskId);
+  |        --------- ^^^^^^
+  |        |
+  |        field in this struct
+  |
+  = help: consider removing this field
+
+warning: creating a shared reference to mutable static
+   --> src\security.rs:424:14
+    |
+424 |     unsafe { &SECURITY_POLICY }
+    |              ^^^^^^^^^^^^^^^^ shared reference to mutable static
+    |
+    = note: shared references to mutable statics are dangerous; it's undefined behavior if the static is mutated or if 
+a mutable reference is created for it while the shared reference lives
+    = note: for more information, see <https://doc.rust-lang.org/edition-guide/rust-2024/static-mut-references.html>
+    = note: `#[warn(static_mut_refs)]` (part of `#[warn(rust_2024_compatibility)]`) on by default
+help: use `&raw const` instead to create a raw pointer
+    |
+424 |     unsafe { &raw const SECURITY_POLICY }
+    |               +++++++++
+
+warning: direct cast of function item into an integer
+   --> src\smp.rs:369:33
+    |
+369 |     AP_DATA.entry.store(ap_main as u64, Ordering::Relaxed);
+    |                                 ^^^^^^
+    |
+    = note: `#[warn(function_casts_as_integer)]` on by default
+help: first cast to a pointer `as *const ()`
+    |
+369 |     AP_DATA.entry.store(ap_main as *const () as u64, Ordering::Relaxed);
+    |                                 ++++++++++++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+  --> src\sync.rs:65:17
+   |
+65 |     pub fn lock(&self) -> SpinLockGuard<T> {
+   |                 ^^^^^     ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+   |                 |
+   |                 the lifetime is elided here
+   |
+   = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+   = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: use `'_` for type paths
+   |
+65 |     pub fn lock(&self) -> SpinLockGuard<'_, T> {
+   |                                         +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\sync.rs:102:21
+    |
+102 |     pub fn try_lock(&self) -> Option<SpinLockGuard<T>> {
+    |                     ^^^^^            ^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                     |
+    |                     the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+102 |     pub fn try_lock(&self) -> Option<SpinLockGuard<'_, T>> {
+    |                                                    +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\sync.rs:187:17
+    |
+187 |     pub fn read(&self) -> ReadGuard<T> {
+    |                 ^^^^^     ^^^^^^^^^^^^ the same lifetime is hidden here
+    |                 |
+    |                 the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+187 |     pub fn read(&self) -> ReadGuard<'_, T> {
+    |                                     +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src\sync.rs:204:18
+    |
+204 |     pub fn write(&self) -> WriteGuard<T> {
+    |                  ^^^^^     ^^^^^^^^^^^^^ the same lifetime is hidden here
+    |                  |
+    |                  the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+204 |     pub fn write(&self) -> WriteGuard<'_, T> {
+    |                                       +++
+
+warning: creating a shared reference to mutable static
+  --> src\usermode.rs:78:63
+   |
+78 |         serial_println!("[syscall] kernel stack top = {:#x}", KERNEL_SYSCALL_STACK_TOP);
+   |                                                               ^^^^^^^^^^^^^^^^^^^^^^^^ shared reference to 
+mutable static
+   |
+   = note: shared references to mutable statics are dangerous; it's undefined behavior if the static is mutated or if 
+a mutable reference is created for it while the shared reference lives
+   = note: for more information, see <https://doc.rust-lang.org/edition-guide/rust-2024/static-mut-references.html>
+
+warning: `mykernel` (lib) generated 49 warnings (run `cargo fix --lib -p mykernel` to apply 30 suggestions)
+warning: the feature `naked_functions` has been stable since 1.88.0 and no longer requires an attribute to enable
+  --> src\main.rs:20:12
+   |
+20 | #![feature(naked_functions)]
+   |            ^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(stable_features)]` on by default
+
+warning: `mykernel` (bin "mykernel") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.37s
