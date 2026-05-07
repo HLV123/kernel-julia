@@ -23,7 +23,8 @@ jl> write_file("/tmp/note.txt", "chạy trên bare-metal")
 jl> read_file("/tmp/note.txt")
 chạy trên bare-metal
 ```
-
+<img src="document/image/9.png" width="900"> 
+<img src="document/image/1.png" width="700"> 
 ---
 
 ## Dự án này là gì
